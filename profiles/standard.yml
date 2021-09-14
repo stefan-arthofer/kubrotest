@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: {TESTCASE}
+spec:
+  hostNetwork: true
+  dnsPolicy: ClusterFirstWithHostNet
+  containers:
+  - name: robotframework
+    image: robotframework:{TAG}
+    #IfNotPresent - Nesscary for Windows Docker Desktop Environment. Image is already there ;-)
+    imagePullPolicy: IfNotPresent
+    volumeMounts:
+    - name: test
+      mountPath: "/test"
+      readOnly: true
+    env:
+    - name: TESTCASE
+      valueFrom:
+        fieldRef:
+          fieldPath: metadata.name
+    - name: NAMESPACE
+      valueFrom:
+        fieldRef:
+          fieldPath: metadata.namespace
+  volumes:
+  - name: test
+    configMap:
+      name: {TESTCASE}
+  restartPolicy: Never
