@@ -13,11 +13,11 @@ def get_usage():
     return """
 run.py <TESTCASE> <PROFILE>
 
-e.g. run.py ALL S8000
+e.g. run.py ALL standard
 
 Arguments:
    [<TESTCASE>]   ... run single test case by name or default="ALL"
-   [<PROFILE>]    ... S8000, CP8050, ...
+   [<PROFILE>]    ... standard, ...
    """
 def check_for_help_agrument(argv, help_message):
     if len(argv) != 2:
