@@ -1,0 +1,8 @@
+# Defines the name of the testcase which is deployed into one pod
+name: example1
+
+# which kube-yml files should be merged together
+kube-yml:
+   - ./pod.yml          # Test definition
+
+
